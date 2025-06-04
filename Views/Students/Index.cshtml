@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h1>Students</h1>
+
+<tr>
+    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+</tr>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().StudentName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.First().City)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentName</td>
+                <td>@student.Email</td>
+                <td>@student.Phone</td>
+                <td>@student.City</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.StudentId" class="btn btn-sm btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@student.StudentId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

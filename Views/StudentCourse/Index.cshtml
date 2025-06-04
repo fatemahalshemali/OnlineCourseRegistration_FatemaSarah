@@ -1,0 +1,35 @@
+﻿@model IEnumerable<StudentCourse>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Enrollments</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Is Approved?</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sc in Model)
+        {
+            <tr>
+                <td>@sc.Student?.StudentName</td>
+                <td>@sc.Course?.Title</td>
+                <td>@(sc.IsApproved ? "Approved" : "Pending")</td>
+                <td>
+                    @if (!sc.IsApproved)
+                    {
+                        <a asp-action="Approve" asp-route-studentId="@sc.StudentId" asp-route-courseId="@sc.CourseId" class="btn btn-success btn-sm">Approve</a>
+                        <a asp-action="Reject" asp-route-studentId="@sc.StudentId" asp-route-courseId="@sc.CourseId" class="btn btn-danger btn-sm">Reject</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

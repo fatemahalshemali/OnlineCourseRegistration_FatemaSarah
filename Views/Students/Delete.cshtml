@@ -1,0 +1,22 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<h1>Are you sure to Delete <span class="text-danger">@Model.StudentName</span></h1>
+<form method="post" asp-action="ConfirmDelete" asp-controller="Students">
+
+    @Html.HiddenFor(m => m.StudentId)
+
+    <input type="submit" value="Delete" class="btn btn-danger" />
+
+    <a asp-action="Index" asp-controller="Students"
+       class="btn btn-warning">
+        Cancel
+    </a>
+
+
+</form>
+
+

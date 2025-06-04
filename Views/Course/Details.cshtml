@@ -1,0 +1,30 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h2>Course Details</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Title</dt>
+        <dd class="col-sm-10">@Model.Title</dd>
+
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Instructor</dt>
+        <dd class="col-sm-10">@Model.Instructor?.FullName</dd>
+
+        <dt class="col-sm-2">Capacity</dt>
+        <dd class="col-sm-10">@Model.Capacity</dd>
+
+        <dt class="col-sm-2">Price</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Duration</dt>
+        <dd class="col-sm-10">@Model.Duration</dd>
+    </dl>
+</div>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
